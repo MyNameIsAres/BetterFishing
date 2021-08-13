@@ -52,9 +52,9 @@ public class MainPlugin extends SimplePlugin {
     private void getStorageInstances() {
         Set<StoreAble> storeAbleItems = new HashSet<>();
 
-//        storeAbleItems.add(customCreatureStorage);
+        storeAbleItems.add(customCreatureStorage);
         storeAbleItems.add(customItemStorage);
-//        storeAbleItems.add(mythicMobStorage);
+        storeAbleItems.add(mythicMobStorage);
 
         storeAbleItems.forEach((item) -> {
             insertLootToMap(item.loadConfig());
