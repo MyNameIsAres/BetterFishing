@@ -38,7 +38,7 @@ public class CustomItem implements Lootable {
 
     }
 
-    private Item createCustomItem(Entity caughtEntity) {
+    private void createCustomItem(Entity caughtEntity) {
         Item caughtItem = (Item) caughtEntity;
         ItemStack itemStack = new ItemStack(Material.valueOf(material), 1);
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -49,8 +49,6 @@ public class CustomItem implements Lootable {
 //        itemMeta.setLore(Arrays.asList(lore));
 
         caughtItem.setItemStack(itemStack);
-
-        return caughtItem;
     }
 
 

@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import lombok.Getter;
 import lombok.Setter;
 import org.geminicraft.betterfishing.events.PlayerListener;
-import org.geminicraft.betterfishing.loot.CustomCreature;
 import org.geminicraft.betterfishing.loot.Lootable;
 import org.geminicraft.betterfishing.storage.CustomCreatureStorage;
 import org.geminicraft.betterfishing.storage.CustomItemStorage;

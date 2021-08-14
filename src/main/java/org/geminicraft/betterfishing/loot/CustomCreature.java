@@ -35,13 +35,12 @@ public class CustomCreature implements Lootable {
         this.armor = armor;
     }
 
-    private LivingEntity spawn(final Location location) {
+    private void spawn(final Location location) {
         LivingEntity livingEntity = (LivingEntity) location.getWorld().spawnEntity(location, entity);
-        return this.buildLivingEntity(livingEntity);
-
+        this.buildLivingEntity(livingEntity);
     }
 
-    private LivingEntity buildLivingEntity(LivingEntity livingEntity) {
+    private void buildLivingEntity(LivingEntity livingEntity) {
         livingEntity.setCustomName(name);
         livingEntity.setCustomNameVisible(true);
         livingEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
@@ -50,8 +49,6 @@ public class CustomCreature implements Lootable {
         livingEntity.getEquipment().setLeggings(armor[1]);
         livingEntity.getEquipment().setChestplate(armor[2]);
         livingEntity.getEquipment().setHelmet(armor[3]);
-
-        return livingEntity;
     }
 
     public String getName() {
@@ -64,7 +61,6 @@ public class CustomCreature implements Lootable {
 
     @Override
     public void createItem(Entity caughtEntity) {
-        System.out.println("Is this used");
         this.spawn(caughtEntity.getLocation());
     }
 }
