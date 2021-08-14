@@ -4,7 +4,6 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 
 public class MythicMobsHook  {
 
@@ -18,8 +17,7 @@ public class MythicMobsHook  {
         return mythicMobs.getAPIHelper();
     }
 
-    public Entity spawnMythicMob(String name, Location location) throws InvalidMobTypeException {
-        return getMythicAPiHelper().spawnMythicMob(name, location);
-
+    public void spawnMythicMob(String name, Location location) throws InvalidMobTypeException {
+        getMythicAPiHelper().spawnMythicMob(name, location);
     }
 }
