@@ -26,9 +26,10 @@ public class MainPlugin extends SimplePlugin {
     @Setter
     Multimap<Double, Lootable> map = ArrayListMultimap.create();
 
-
     @Override
     protected void onPluginStart() {
+
+
 
         this.getStorageInstances();
 

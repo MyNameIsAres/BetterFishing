@@ -10,8 +10,6 @@ public class FishMenuCommand extends SimpleCommand {
 
     @Override
     protected void onCommand() {
-
-
     }
 
 }

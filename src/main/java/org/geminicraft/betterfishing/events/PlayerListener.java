@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.util.Vector;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.Lootable;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.RandomUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,6 @@ public class PlayerListener implements Listener {
                 }
             });
 
-            // TODO Consider to put this in a private method
             this.spawnLoot(weightedList, entity, entityLocation);
         }
     }
