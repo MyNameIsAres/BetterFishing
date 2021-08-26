@@ -2,4 +2,6 @@
 target
 build.xml
 GeminiFishing.iml
+BetterFishing.iml
+out
 foundation.yml

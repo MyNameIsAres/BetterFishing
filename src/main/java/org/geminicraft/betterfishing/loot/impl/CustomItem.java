@@ -1,4 +1,4 @@
-package org.geminicraft.betterfishing.loot;
+package org.geminicraft.betterfishing.loot.impl;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.geminicraft.betterfishing.loot.Lootable;
 
 import java.util.Arrays;
 import java.util.Set;

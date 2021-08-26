@@ -4,8 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.EntityType;
 import org.geminicraft.betterfishing.MainPlugin;
-import org.geminicraft.betterfishing.loot.CustomCreature;
+import org.geminicraft.betterfishing.loot.impl.CustomCreature;
 import org.geminicraft.betterfishing.loot.Lootable;
 
 import java.io.File;
@@ -17,69 +18,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CustomCreatureStorage implements StoreAble {
+public class CustomCreatureStorage extends Storage {
 
     @Getter
     @Setter
     public Map<String, Integer> customCreatureStorage = new HashMap<>();
 
-    private final MainPlugin mainPlugin;
-    private FileConfiguration fileConfiguration = null;
-    private File configFile = null;
     private final static String FILE = "creatures.yml";
 
     public CustomCreatureStorage(MainPlugin mainPlugin) {
-        this.mainPlugin = mainPlugin;
-
+        super(mainPlugin, FILE);
         saveDefaultConfig();
-
     }
 
+    @Override
     public void reloadConfig() {
-        if (this.configFile == null) {
-            this.configFile = new File(this.mainPlugin.getDataFolder(), FILE);
-        }
-
-        this.fileConfiguration = YamlConfiguration.loadConfiguration(configFile);
-        InputStream defaultStream = this.mainPlugin.getResource(FILE);
-        if (defaultStream != null) {
-            YamlConfiguration defaultConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
-            this.fileConfiguration.setDefaults(defaultConfiguration);
-        }
+        super.reloadConfig();
     }
 
+    @Override
     public FileConfiguration getConfig() {
-        if (this.fileConfiguration == null) {
-            reloadConfig();
-        }
-        return this.fileConfiguration;
+        return super.getConfig();
     }
 
+    @Override
     public void saveConfig() {
-        if (this.fileConfiguration == null || this.configFile == null) {
-            return;
-        }
-
-        try {
-            this.getConfig().save(this.configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        super.saveConfig();
     }
 
+    @Override
     public void saveDefaultConfig() {
-        if (this.configFile == null) {
-            System.out.println("This is null.. so create it?");
-            this.configFile = new File(this.mainPlugin.getDataFolder(), FILE);
-        }
-
-        System.out.println(configFile + " WTF does it thinkt his is");
-        System.out.println(mainPlugin.getDataFolder() + " is the data folder evn real");
-
-        if (!this.configFile.exists()) {
-            this.mainPlugin.saveResource(FILE, false);
-        }
+        super.saveDefaultConfig();
     }
+
 
     @Override
     public List<Lootable> loadConfig() {
@@ -87,7 +58,7 @@ public class CustomCreatureStorage implements StoreAble {
 
         this.getConfig().getKeys(false).forEach((item) -> {
             try {
-                customCreatureList.add(new CustomCreature(getConfig().getString(item + ".name"), getConfig().getDouble(item + ".dropWeight")));
+                customCreatureList.add(new CustomCreature(getConfig().getString(item + ".name"), getConfig().getDouble(item + ".dropWeight"), EntityType.valueOf(getConfig().getString(item + ".entitytype"))));
                 System.out.println(customCreatureList.size());
             } catch (NullPointerException e) {
                 e.printStackTrace();

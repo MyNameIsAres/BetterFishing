@@ -1,8 +1,9 @@
-package org.geminicraft.betterfishing.loot;
+package org.geminicraft.betterfishing.loot.impl;
 
 import io.lumine.xikage.mythicmobs.api.exceptions.InvalidMobTypeException;
 import org.bukkit.entity.Entity;
 import org.geminicraft.betterfishing.hooks.MythicMobsHook;
+import org.geminicraft.betterfishing.loot.Lootable;
 import org.mineacademy.fo.Common;
 
 public class MythicMobsLoot implements Lootable {

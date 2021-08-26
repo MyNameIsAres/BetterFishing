@@ -1,4 +1,4 @@
-package org.geminicraft.betterfishing.loot;
+package org.geminicraft.betterfishing.loot.impl;
 
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
+import org.geminicraft.betterfishing.loot.Lootable;
 
 
 import java.util.List;
@@ -19,9 +20,13 @@ public class CustomCreature implements Lootable {
     private List<CustomItem> customItems;
     private ItemStack[] armor;
 
-    public CustomCreature(String name, double spawnChance) {
+
+    public CustomCreature(String name, double spawnChance, EntityType entityType) {
         this.name = name;
         this.spawnChance = spawnChance;
+        this.entity = entityType;
+
+
     }
 
     public CustomCreature(String name, String creatureID, double maxHealth, double spawnChance, EntityType entity, ItemStack droppedItem, List<CustomItem> customItems, ItemStack[] armor) {

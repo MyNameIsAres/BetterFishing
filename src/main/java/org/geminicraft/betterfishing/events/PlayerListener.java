@@ -34,6 +34,9 @@ public class PlayerListener implements Listener {
             }
             List<Lootable> weightedList = new ArrayList<>();
             Entity entity = event.getCaught();
+
+            System.out.println("Entity: " + entity.getType().name());
+
             Location entityLocation = entity.getLocation();
             Vector velocity = player.getLocation().toVector().subtract(entityLocation.toVector());
 
@@ -59,12 +62,19 @@ public class PlayerListener implements Listener {
     }
 
     private void spawnLoot(List<Lootable> lootAbleList, Entity entity, Location entityLocation) {
+
+        System.out.println("Entity in SpawnLoot: " + entity.getName());
+        System.out.println("Location in SpawnLoot: " + entityLocation.toString());
+
         if (lootAbleList.isEmpty()) {
             entityLocation.getWorld().spawnEntity(entityLocation, entity.getType());
         } else if (lootAbleList.size() > 1) {
             int randomNumber = ThreadLocalRandom.current().nextInt(lootAbleList.size());
 
             Lootable spawnedLoot = lootAbleList.get(randomNumber);
+
+            System.out.println("SpawnedLoot variable: " + spawnedLoot.toString());
+
             spawnedLoot.createItem(entity);
         } else {
             lootAbleList.get(0).createItem(entity);
