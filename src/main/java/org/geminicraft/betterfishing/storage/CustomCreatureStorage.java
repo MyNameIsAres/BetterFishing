@@ -3,16 +3,11 @@ package org.geminicraft.betterfishing.storage;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.impl.CustomCreature;
 import org.geminicraft.betterfishing.loot.Lootable;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +45,6 @@ public class CustomCreatureStorage extends Storage {
     public void saveDefaultConfig() {
         super.saveDefaultConfig();
     }
-
 
     @Override
     public List<Lootable> loadConfig() {

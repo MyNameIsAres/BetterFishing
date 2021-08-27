@@ -8,7 +8,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.geminicraft.betterfishing.loot.Lootable;
 
-
 import java.util.List;
 
 public class CustomCreature implements Lootable {
@@ -25,8 +24,6 @@ public class CustomCreature implements Lootable {
         this.name = name;
         this.spawnChance = spawnChance;
         this.entity = entityType;
-
-
     }
 
     public CustomCreature(String name, String creatureID, double maxHealth, double spawnChance, EntityType entity, ItemStack droppedItem, List<CustomItem> customItems, ItemStack[] armor) {
