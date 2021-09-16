@@ -8,8 +8,14 @@ import org.mineacademy.fo.Common;
 
 public class MythicMobsLoot implements Lootable {
 
-    private final String name;
+    private String name, lootID;
     private final double spawnChance;
+
+    public MythicMobsLoot(String name, String lootID, double spawnChance) {
+        this.name = name;
+        this.lootID = lootID;
+        this.spawnChance = spawnChance;
+    }
 
     public MythicMobsLoot(String name, double spawnChance) {
         this.name = name;
@@ -28,10 +34,19 @@ public class MythicMobsLoot implements Lootable {
         } catch (InvalidMobTypeException exception) {
             Common.error(exception, "Could not create a Mythic Mob!");
         }
-
     }
 
     public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getLootID() {
+        return lootID;
+    }
+
+    @Override
+    public String getLootName() {
         return name;
     }
 }

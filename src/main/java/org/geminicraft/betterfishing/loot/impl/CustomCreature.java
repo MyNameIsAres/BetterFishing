@@ -57,6 +57,16 @@ public class CustomCreature implements Lootable {
         return name;
     }
 
+    @Override
+    public String getLootID() {
+        return creatureID;
+    }
+
+    @Override
+    public String getLootName() {
+        return name;
+    }
+
     public double getSpawnChance() {
         return spawnChance;
     }

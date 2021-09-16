@@ -4,7 +4,9 @@ import org.bukkit.entity.Entity;
 
 public interface Lootable {
 
-    double spawnChance = 0.0;
+    String getLootID();
+
+    String getLootName();
 
     double getSpawnChance();
 
