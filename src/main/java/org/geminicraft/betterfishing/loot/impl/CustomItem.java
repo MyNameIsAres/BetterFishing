@@ -46,9 +46,7 @@ public class CustomItem implements Lootable {
         itemMeta.setDisplayName(name);
         caughtItem.setCustomName(name);
         caughtItem.setCustomNameVisible(true);
-
 //        itemMeta.setLore(Arrays.asList(lore));
-
         caughtItem.setItemStack(itemStack);
     }
 
@@ -58,6 +56,15 @@ public class CustomItem implements Lootable {
         return name;
     }
 
+    @Override
+    public String getLootID() {
+        return itemID;
+    }
+
+    @Override
+    public String getLootName() {
+        return name;
+    }
 
     @Override
     public double getSpawnChance() {

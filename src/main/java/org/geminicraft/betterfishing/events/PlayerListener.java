@@ -8,6 +8,8 @@ import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.util.Vector;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.Lootable;
+import org.geminicraft.betterfishing.utility.Messages;
+import org.mineacademy.fo.Common;
 import org.mineacademy.fo.RandomUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +37,10 @@ public class PlayerListener implements Listener {
             List<Lootable> weightedList = new ArrayList<>();
             Entity entity = event.getCaught();
 
-            System.out.println("Entity: " + entity.getType().name());
-
             Location entityLocation = entity.getLocation();
             Vector velocity = player.getLocation().toVector().subtract(entityLocation.toVector());
 
             this.setVelocityToEntity(entity, velocity);
-
 
             mainPlugin.getMap().forEach((key, value) -> {
                 // TODO Create own private (lightweight) chance class
@@ -49,8 +48,7 @@ public class PlayerListener implements Listener {
                     weightedList.add(value);
                 }
             });
-
-            this.spawnLoot(weightedList, entity, entityLocation);
+            this.spawnLoot(weightedList, entity, entityLocation, player);
         }
     }
 
@@ -61,23 +59,24 @@ public class PlayerListener implements Listener {
         entity.setVelocity(velocity);
     }
 
-    private void spawnLoot(List<Lootable> lootAbleList, Entity entity, Location entityLocation) {
-
-        System.out.println("Entity in SpawnLoot: " + entity.getName());
-        System.out.println("Location in SpawnLoot: " + entityLocation.toString());
-
+    private void spawnLoot(List<Lootable> lootAbleList, Entity entity, Location entityLocation, Player player) {
+        Lootable spawnedLoot;
         if (lootAbleList.isEmpty()) {
             entityLocation.getWorld().spawnEntity(entityLocation, entity.getType());
+
+            Common.tell(player, Messages.caughtFishMessage(entity));
         } else if (lootAbleList.size() > 1) {
             int randomNumber = ThreadLocalRandom.current().nextInt(lootAbleList.size());
 
-            Lootable spawnedLoot = lootAbleList.get(randomNumber);
-
-            System.out.println("SpawnedLoot variable: " + spawnedLoot.toString());
-
+            spawnedLoot = lootAbleList.get(randomNumber);
             spawnedLoot.createItem(entity);
+
+            Common.tell(player, Messages.caughtLootMessage(spawnedLoot));
         } else {
-            lootAbleList.get(0).createItem(entity);
+            spawnedLoot = lootAbleList.get(0);
+            spawnedLoot.createItem(entity);
+
+            Common.tell(player, Messages.caughtLootMessage(spawnedLoot));
         }
     }
 

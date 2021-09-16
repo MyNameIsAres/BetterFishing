@@ -52,7 +52,7 @@ public class CustomCreatureStorage extends Storage {
 
         this.getConfig().getKeys(false).forEach((item) -> {
             try {
-                customCreatureList.add(new CustomCreature(getConfig().getString(item + ".name"), getConfig().getDouble(item + ".dropWeight"), EntityType.valueOf(getConfig().getString(item + ".entitytype"))));
+                customCreatureList.add(new CustomCreature(getConfig().getString(item + ".name"), getConfig().getDouble(item + ".dropWeight"), EntityType.valueOf(getConfig().getString(item + ".entityType"))));
                 System.out.println(customCreatureList.size());
             } catch (NullPointerException e) {
                 e.printStackTrace();

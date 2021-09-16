@@ -39,9 +39,6 @@ public class MainPlugin extends SimplePlugin {
 
     private void insertLootToMap(List<Lootable> customCreaturesList) {
         customCreaturesList.forEach((item) -> {
-
-            System.out.println(item + " My Item");
-
             map.put(item.getSpawnChance(), item);
         });
     }
