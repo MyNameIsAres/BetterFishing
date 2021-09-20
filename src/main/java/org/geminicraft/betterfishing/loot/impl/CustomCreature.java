@@ -20,8 +20,9 @@ public class CustomCreature implements Lootable {
     private ItemStack[] armor;
 
 
-    public CustomCreature(String name, double spawnChance, EntityType entityType) {
+    public CustomCreature(String name, double maxHealth, double spawnChance, EntityType entityType) {
         this.name = name;
+        this.maxHealth = maxHealth;
         this.spawnChance = spawnChance;
         this.entity = entityType;
     }

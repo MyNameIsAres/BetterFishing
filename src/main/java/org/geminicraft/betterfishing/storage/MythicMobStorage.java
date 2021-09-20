@@ -1,15 +1,9 @@
 package org.geminicraft.betterfishing.storage;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.Lootable;
 import org.geminicraft.betterfishing.loot.impl.MythicMobsLoot;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 

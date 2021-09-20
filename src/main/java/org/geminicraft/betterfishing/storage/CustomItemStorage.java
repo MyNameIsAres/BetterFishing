@@ -3,16 +3,9 @@ package org.geminicraft.betterfishing.storage;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.impl.CustomItem;
 import org.geminicraft.betterfishing.loot.Lootable;
-import org.geminicraft.betterfishing.utility.Utility;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class CustomItemStorage extends Storage {
@@ -55,7 +48,11 @@ public class CustomItemStorage extends Storage {
 
         this.getConfig().getKeys(false).forEach((item) -> {
             try {
-                customItemList.add(new CustomItem(getConfig().getString(item + ".name"), getConfig().getDouble(item + ".dropWeight"), getConfig().getString(item + ".material")));
+                customItemList.add(new CustomItem(getConfig().getString(item + ".name"),
+                        getConfig().getDouble(item + ".dropWeight"),
+                        getConfig().getString(item + ".material"),
+                        getConfig().getStringList(item + ".lore")
+                ));
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
