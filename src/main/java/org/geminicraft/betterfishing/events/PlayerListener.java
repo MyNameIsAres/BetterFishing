@@ -1,18 +1,22 @@
 package org.geminicraft.betterfishing.events;
 
-import org.bukkit.Location;
+import org.bukkit.*;
+
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
+
 import org.bukkit.event.player.PlayerFishEvent;
+
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.Lootable;
 import org.geminicraft.betterfishing.utility.Messages;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.RandomUtil;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import org.geminicraft.betterfishing.utility.Utility;
 
@@ -23,7 +27,6 @@ public class PlayerListener implements Listener {
     public PlayerListener(MainPlugin mainPlugin) {
         this.mainPlugin = mainPlugin;
     }
-
 
     @EventHandler
     public void onPlayerFish(final PlayerFishEvent event) {
@@ -42,7 +45,7 @@ public class PlayerListener implements Listener {
 
             this.setVelocityToEntity(entity, velocity);
 
-            mainPlugin.getMap().forEach((key, value) -> {
+            mainPlugin.getLootMap().forEach((key, value) -> {
                 // TODO Create own private (lightweight) chance class
                 if (RandomUtil.chanceD(key)) {
                     weightedList.add(value);
@@ -51,7 +54,6 @@ public class PlayerListener implements Listener {
             this.spawnLoot(weightedList, entity, entityLocation, player);
         }
     }
-
 
     private void setVelocityToEntity(Entity entity, Vector velocity) {
         velocity.multiply(0.1);

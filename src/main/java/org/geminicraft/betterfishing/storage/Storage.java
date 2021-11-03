@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class Storage implements StoreAble{
+public abstract class Storage implements StoreAble {
 
     private final MainPlugin mainPlugin;
     private FileConfiguration fileConfiguration = null;
@@ -68,10 +68,8 @@ public abstract class Storage implements StoreAble{
         }
     }
 
-
     public List<Lootable> loadConfig() {
         return new ArrayList<>();
     }
-
 
 }

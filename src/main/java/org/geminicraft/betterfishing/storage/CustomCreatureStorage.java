@@ -49,13 +49,12 @@ public class CustomCreatureStorage extends Storage {
     @Override
     public List<Lootable> loadConfig() {
         List<Lootable> customCreatureList = new ArrayList<>();
-
         this.getConfig().getKeys(false).forEach((item) -> {
             try {
                 customCreatureList.add(new CustomCreature(getConfig().getString(item + ".name"),
                         getConfig().getDouble(item + ".health"),
-                        getConfig().getDouble(item + ".dropWeight"),
-                        EntityType.valueOf(getConfig().getString(item + ".entityType"))));
+                        getConfig().getDouble(item + ".dropWeight")
+                      ));
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
