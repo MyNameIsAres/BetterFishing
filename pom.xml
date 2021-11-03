@@ -38,6 +38,13 @@
             <name>Lumine Releases</name>
             <url>https://mvn.lumine.io/repository/maven-public/</url>
         </repository>
+
+
+        <repository>
+                <id>sk89q-repo</id>
+                <url>https://maven.enginehub.org/repo/</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
@@ -73,6 +80,10 @@
             <artifactId>GeminiPlugin</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
+
+
+
+
     </dependencies>
 
     <build>
@@ -104,7 +115,7 @@
 
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <finalName>${project.name}-${project.version}</finalName>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
                             <artifactSet>
                                 <includes>
                                     <include>org.mineacademy:Game*</include>
@@ -131,6 +142,9 @@
                 </executions>
             </plugin>
         </plugins>
+
+
+
 
         <resources>
             <resource>

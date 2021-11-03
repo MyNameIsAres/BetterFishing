@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 
 import org.bukkit.event.player.PlayerFishEvent;
 
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 import org.geminicraft.betterfishing.MainPlugin;
 import org.geminicraft.betterfishing.loot.Lootable;
@@ -27,7 +28,6 @@ public class PlayerListener implements Listener {
         this.mainPlugin = mainPlugin;
     }
 
-
     @EventHandler
     public void onPlayerFish(final PlayerFishEvent event) {
         final Player player = event.getPlayer();
@@ -45,7 +45,7 @@ public class PlayerListener implements Listener {
 
             this.setVelocityToEntity(entity, velocity);
 
-            mainPlugin.getMap().forEach((key, value) -> {
+            mainPlugin.getLootMap().forEach((key, value) -> {
                 // TODO Create own private (lightweight) chance class
                 if (RandomUtil.chanceD(key)) {
                     weightedList.add(value);
@@ -54,7 +54,6 @@ public class PlayerListener implements Listener {
             this.spawnLoot(weightedList, entity, entityLocation, player);
         }
     }
-
 
     private void setVelocityToEntity(Entity entity, Vector velocity) {
         velocity.multiply(0.1);

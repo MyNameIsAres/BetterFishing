@@ -19,23 +19,14 @@ public class CustomCreature implements Lootable {
     private List<CustomItem> customItems;
     private ItemStack[] armor;
 
-
-    public CustomCreature(String name, double maxHealth, double spawnChance, EntityType entityType) {
+    /*
+        TODO: Fix known bug where it can't find the EntityType. Find it by name from a list of correct names.
+        TODO: Optional parameters or improved null checks for all Loot classes.
+     */
+    public CustomCreature(String name, double maxHealth, double spawnChance) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.spawnChance = spawnChance;
-        this.entity = entityType;
-    }
-
-    public CustomCreature(String name, String creatureID, double maxHealth, double spawnChance, EntityType entity, ItemStack droppedItem, List<CustomItem> customItems, ItemStack[] armor) {
-        this.name = name;
-        this.creatureID = creatureID;
-        this.maxHealth = maxHealth;
-        this.spawnChance = spawnChance;
-        this.entity = entity;
-        this.droppedItem = droppedItem;
-        this.customItems = customItems;
-        this.armor = armor;
     }
 
     private void spawn(final Location location) {

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.geminicraft.betterfishing.commands.loot.LootCommandGroup;
 import org.geminicraft.betterfishing.events.PlayerListener;
-import org.geminicraft.betterfishing.events.TestListener;
 import org.geminicraft.betterfishing.loot.Lootable;
 import org.geminicraft.betterfishing.storage.*;
 import org.mineacademy.fo.plugin.SimplePlugin;
@@ -22,14 +21,13 @@ public class MainPlugin extends SimplePlugin {
 
     @Getter
     @Setter
-    Multimap<Double, Lootable> map = ArrayListMultimap.create();
+    Multimap<Double, Lootable> lootMap = ArrayListMultimap.create();
 
     @Override
     protected void onPluginStart() {
-        this.getStorageInstances();
+        getStorageInstances();
 
         registerEvents(new PlayerListener(this));
-        registerEvents(new TestListener());
         registerCommands("fish", new LootCommandGroup());
     }
 
@@ -42,7 +40,7 @@ public class MainPlugin extends SimplePlugin {
 
     private void insertLootToMap(List<Lootable> customCreaturesList) {
         customCreaturesList.forEach((item) -> {
-            map.put(item.getSpawnChance(), item);
+            lootMap.put(item.getSpawnChance(), item);
         });
     }
 

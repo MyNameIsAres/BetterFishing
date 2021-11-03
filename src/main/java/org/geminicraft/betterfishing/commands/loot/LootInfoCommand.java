@@ -9,12 +9,10 @@ public class LootInfoCommand extends SimpleSubCommand {
         super(parent, "info");
         setDescription("Get information about loot!");
         setUsage("/fish info <fish>");
-
     }
 
     @Override
     protected void onCommand() {
-            //        /fish info <fish>
     }
 }
 
